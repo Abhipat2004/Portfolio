@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhineet Pathak | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: #f0f0f0;
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .dark-mode {
+      background: linear-gradient(135deg, #0c0f17, #1a2633);
+      color: #f7f7f7;
+    }
+
+    .dark-mode .card {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #0c0f17;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .preloader span {
+      font-size: 2rem;
+      color: #00eaff;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #00eaff;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      margin-left: 2rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -5px;
+      background-color: #00eaff;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 50px 50px;
+      min-height: 70vh;
+      transition: all 0.4s ease;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      padding-top: 150px;
+      flex-wrap: wrap;
+      text-align: left;
+      margin-left: 150px;
+      margin-right: 200px;
+    }
+
+    .hero-text {
+      max-width: 650px;
+    }
+
+    .hero img {
+      width: 300px;
+      height: 400px;
+      border-radius: 30%;
+      margin-top: 100px;
+      object-fit: cover;
+      border: 4px solid #00eaff;
+      transition: transform 0.3s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.05);
+    }
+
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+
+      .hero img {
+        margin-top: 2rem;
+      }
+    }
+
+    .about {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      padding-top: 150px;
+      flex-wrap: wrap;
+      text-align: left;
+      margin-left: 150px;
+      margin-right: 200px;
+    }
+
+    .about-text {
+      max-width: 600px;
+    }
+
+
+    .about img {
+     width: 400px;
+      height: 550px;
+      border-radius: 30%;
+      margin-top: 100px;
+      object-fit: cover;
+      border: 4px solid #00eaff;
+      transition: transform 0.3s ease;
+    }
+
+    .about img:hover {
+      transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text {
+        max-width: 100%;
+      }
+
+      .about img {
+        margin-top: 2rem;
+      }
+    }
+
+    .flex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background-color: rgba(0, 234, 255, 0.2);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+      transform: scale(1.1);
+    }
+
+    .brief {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+
+/* Unique h2 colors */
+#home h2 { color: #00eaff; }
+    #about h2 { color: #00eaff; }
+    #skills h2 { color: #00eaff; }
+    #education h2 { color: #00eaff; }
+    #experience h2 { color: #00eaff; }
+    #certifications h2 { color: #00eaff; }
+    #projects h2 { color: #00eaff; }
+    #contact h2 { color: #00eaff; }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+     /* Dark mode toggle floating button */
+     .dark-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #00eaff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      color: black;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      z-index: 1001;
+      transition: transform 0.3s;
+    }
+
+    .dark-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .details {
+      display: none;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .card.show .details {
+      display: block;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background-color: #00eaff;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 30px;
+      margin-left: 200px;
+      transition: transform 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .toggle-btn {
+      padding: 0.4rem 1rem;
+      background-color: transparent;
+      border: 2px solid #00eaff;
+      color: #00eaff;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #00eaff;
+      color: #000;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #f7f7f7;
+    }
+
+    #chatbot-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #00eaff;
+  color: #000;
+  padding: 15px 18px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 9999;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+#chatbot-window {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  width: 300px;
+  max-height: 400px;
+  background: #1a2633;
+  border: 2px solid #00eaff;
+  border-radius: 15px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+#chatbot-header {
+  background: #00eaff;
+  color: #000;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#chatbot-messages {
+  padding: 10px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 280px;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+}
+
+#chatbot-input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: #0c0f17;
+  color: #f0f0f0;
+  border-top: 1px solid #00eaff;
+}
+
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preloader"><span>Loading...</span></div>
+
+  <header>
+    <h1>Abhineet Pathak</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero" data-aos="fade-up">
+    <div class="hero-text">
+      <h2>Hello, I'm <span id="typed"></span></h2>
+      <p>Hi, I'm Abhineet — a passionate B.Tech student driven by innovation and curiosity. I'm a versatile Full Stack Developer, Machine Learning Engineer, and Robotics Enthusiast with a strong foundation in Data Analysis. Known for being a team player, problem-solver, and an inspiring leader, I thrive on building impactful solutions that bridge technology and real-world challenges.</p>
+      <button class="btn" onclick="window.open('https://drive.google.com/file/d/1SDfQEoygnOBY4vNJZTclFxe34rtPGCOc/view?usp=sharing')">View Resume</button>
+    </div>
+    <img src="abhineet.jpg" alt="Your Photo">
+  </section>
+
+  <section id="about" class="about" data-aos="fade-up">
+    <div class="about-text">
+    <h2>About Me</h2>
+    <p>I’m a final-year B.Tech student with a passion for blending technology, creativity, and innovation. My academic and professional journey has shaped me into a versatile individual, with experience spanning Full Stack Development, Machine Learning, Robotics Engineering, and Data Analysis.
+
+        I’ve completed internships in Data Science, Web Development, and Marketing, each enriching my perspective and sharpening my practical skills. Whether it’s building scalable web applications, developing intelligent models, or analyzing market dynamics, I bring a solution-driven mindset to every challenge.
+        
+        As a Robotics enthusiast, I’m fascinated by the convergence of AI and embedded systems to build smart, impactful machines. My work in this field is driven by a desire to apply tech in ways that solve real-world problems—especially in areas like healthcare, automation, and accessibility.
+        
+        Outside the technical sphere, I’m also a passionate photographer and creative writer. Capturing moments and expressing stories through words and visuals fuels my artistic side and adds balance to my logical thinking. I believe creativity is just as important as code when it comes to building meaningful solutions.
+        
+        My leadership and collaborative abilities have helped me thrive in team environments, and I’ve been fortunate to lead and contribute to various successful projects. I take pride in being both a team player and a motivational leader, always ready to guide or learn with my peers.
+        
+        My efforts have been recognized on multiple platforms — I’ve won 2 international, 1 national, and several college and state-level competitions, validating both my technical and creative capabilities.
+        
+        I’m constantly exploring new technologies, challenging myself with competitions and hackathons, and striving to grow both personally and professionally. My ultimate goal is to work on cutting-edge innovations that make a meaningful difference in the world.
+        
+</p>
+</div>
+<img src="collage.jpg" alt="Your Photo">
+  </section>        
+
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="flex-grid">
+      <a href="link-to-skill-1">
+        <div class="card">
+          <img src="development.svg" alt="HTML">
+          <h3>Full-Stack Development</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-2">
+        <div class="card">
+          <img src="machine-learning.svg" alt="CSS">
+          <h3>Machine Learning</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-3">
+        <div class="card">
+          <img src="data-science.svg" alt="JavaScript">
+          <h3>Data Science/Analytics</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-1">
+        <div class="card">
+          <img src="DSA.svg" alt="HTML">
+          <h3>Programming</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-1">
+        <div class="card">
+          <img src="c.svg" alt="HTML">
+          <h3>DSA</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-1">
+        <div class="card">
+          <img src="raspberrypi.svg" alt="HTML">
+          <h3>Electronics & Hardware</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-1">
+        <div class="card">
+          <img src="ROS.svg" alt="HTML">
+          <h3>Robotics</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-skill-1">
+        <div class="card">
+          <img src="networking.svg" alt="HTML">
+          <h3>Communication & Networking</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="education" data-aos="fade-up">
+    <h2>Education</h2>
+    <div class="flex-grid">
+      <a href="link-to-education-1">
+        <div class="card">
+          <img src="SRM.png" alt="Degree">
+          <h3>B.Tech</h3>
+          <p class="brief">Pursuing Engineering</p>
+          <p class="details">Currently pursuing a B.Tech degree in Computer Science and Engineering at XYZ University.</p>
+        </div>
+      </a>
+      <a href="link-to-education-1">
+        <div class="card">
+          <img src="LFH.jpg" alt="Degree">
+          <h3>Intermediate</h3>
+          <p class="brief">2022</p>
+          <p class="details">Currently pursuing a B.Tech degree in Computer Science and Engineering at XYZ University.</p>
+        </div>
+      </a>
+      <a href="link-to-education-1">
+        <div class="card">
+          <img src="MRSPS.jpg" alt="Degree">
+          <h3>High School</h3>
+          <p class="brief">2020</p>
+          <p class="details">Currently pursuing a B.Tech degree in Computer Science and Engineering at XYZ University.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="experience" data-aos="fade-up">
+    <h2>Experience</h2>
+    <div class="flex-grid">
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="KD_logo.jpg" alt="Internship">
+          <h3>Co-Founder & COO</h3>
+          <p class="brief">Kapidhwaj Dynamics Pvt. Ltd.</p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="ac logo.jpg" alt="Internship">
+          <h3>Electronics Domain Lead</h3>
+          <p class="brief">Automation Club SRM</p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="future-intern.png" alt="Internship">
+          <h3>Data Science Intern</h3>
+          <p class="brief">Worked on web development</p>
+          <p class="details">Developed features and optimized web applications at ABC Corp.</p>
+        </div>
+      </a>
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="mycaptain.avif" alt="Internship">
+          <h3>Web Development Intern</h3>
+          <p class="brief">Worked on web development</p>
+          <p class="details">Developed features and optimized web applications at ABC Corp.</p>
+        </div>
+      </a>
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="mycaptain.avif" alt="Internship">
+          <h3>Marketing Intern</h3>
+          <p class="brief">Worked on web development</p>
+          <p class="details">Developed features and optimized web applications at ABC Corp.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="certifications" data-aos="fade-up">
+    <h2>Certifications</h2>
+    <div class="flex-grid">
+      <a href="link-to-certificate-1">
+        <div class="card">
+          <img src="https://via.placeholder.com/60" alt="Certificate">
+          <h3>Web Development Certification</h3>
+          <p class="brief">Certified Web Developer</p>
+          <p class="details">Achieved certification in Web Development from XYZ Organization.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="flex-grid">
+      <a href="link-to-project-1">
+        <div class="card">
+          <img src="drone.png" alt="Project">
+          <h3>Fire controlling Drone Swarm</h3>
+          <p class="brief">TECHNOXIAN 2024</p>
+          <p class="details">Secured 6th rank Globally.</p>
+        </div>
+      </a>
+       <a href="link-to-project-1">
+        <div class="card">
+          <img src="greenhouse.png" alt="Project">
+          <h3>Automated Green House Controlling</h3>
+          <p class="brief">SIH 2024</p>
+          <p class="details">Went to level 3</p>
+        </div>
+      </a>
+       <a href="link-to-project-1">
+        <div class="card">
+          <img src="cobot.png" alt="Project">
+          <h3>Welding Cobot</h3>
+          <p class="brief">Club project</p>
+          <p class="details"Can do autonomous welding</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="achievments" data-aos="fade-up">
+    <h2>Achievments</h2>
+    <div class="flex-grid">
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="technoxian.webp" alt="Internship">
+          <h3>Technoxian</h3>
+          <p class="brief">Global rank 6</p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="nrc.png" alt="Internship">
+          <h3>National Robotics Championship, Singapore</h3>
+          <p class="brief">1st Runner up</p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="link-to-experience-1">
+        <div class="card">
+          <img src="sih.webp" alt="Internship">
+          <h3>Smart India Hackathon</h3>
+          <p class="brief">went to 3rd round</p>
+          <p class="details"></p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <div class="flex-grid">
+      <a href="mailto:pabhineet7@gmail.com">
+        <div class="card">
+          <img src="mail.jpg" alt="Contact">
+          <h3>Email</h3>
+          <p class="brief">pabhineet7@gmail.com</p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="https://linked.in/abhineet-pathak-9a265b279" target="_blank">
+        <div class="card">
+          <img src="linkedin.png" alt="Contact">
+          <h3>LinkedIn</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+      <a href="https://github.com/Abhipat2004" target="_blank">
+        <div class="card">
+          <img src="git-hub.png" alt="Contact">
+          <h3>Git-Hub</h3>
+          <p class="brief"></p>
+          <p class="details"></p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div id="chatbot-button" onclick="toggleChat()">
+  💬
+</div>
+
+<div id="chatbot-window">
+  <div id="chatbot-header">Ask Abhineet 🤖</div>
+  <div id="chatbot-messages"></div>
+  <input type="text" id="chatbot-input" placeholder="Ask me anything..." onkeydown="handleInput(event)" />
+</div>
+
+
+  <footer>
+    &copy; 2025 Abhineet Pathak. All rights reserved.
+  </footer>
+
+   <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Use DOMContentLoaded for faster hiding, and a fallback timeout
+    window.addEventListener("DOMContentLoaded", () => {
+      const preloader = document.querySelector(".preloader");
+      if (preloader) {
+        preloader.style.display = "none";
+      }
+    });
+
+    // Fallback in case DOMContentLoaded is not sufficient or for very fast loads
+    window.addEventListener("load", () => {
+      const preloader = document.querySelector(".preloader");
+      if (preloader) {
+        preloader.style.display = "none";
+      }
+    });
+
+    // Also, a good practice to set a timeout to hide it after a few seconds even if events don't fire
+    setTimeout(() => {
+        const preloader = document.querySelector(".preloader");
+        if (preloader) {
+            preloader.style.display = "none";
+        }
+    }, 3000); // Hide after 3 seconds as a failsafe
+
+
+    const typed = new Typed("#typed", {
+      strings: ["Abhineet Pathak", "a Full-Stack Developer", "a Robotics Engineer", "an ML Engineer", "a Data Analyst"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true,
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+  <script>const chatbotData = {
+    "skills": "I'm skilled in HTML, CSS, JavaScript, full-stack web development, machine learning, data analysis, and robotics.",
+    "education": "I'm pursuing a B.Tech in Computer Science and Engineering from XYZ University.",
+    "experience": "I've completed internships in software development, web development, marketing, and data science.",
+    "certifications": "I have certifications in web development, machine learning, and marketing.",
+    "projects": "I’ve worked on a 5G-enabled smart glove for remote surgery, a brain-signal-controlled car using ESP32, and this portfolio website.",
+    "contact": "You can contact me at abhineet@example.com.",
+    "awards": "I've won 2 international, 1 national, and several state and college-level competitions.",
+    "default": "Sorry, I’m not sure how to answer that. Try asking about my skills, education, projects, or contact."
+  };
+  
+  function toggleChat() {
+    const chat = document.getElementById("chatbot-window");
+    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+  }
+  
+  function handleInput(event) {
+    if (event.key === "Enter") {
+      const input = document.getElementById("chatbot-input");
+      const userMsg = input.value.trim();
+      if (userMsg) {
+        appendMessage("You", userMsg);
+        respondTo(userMsg.toLowerCase());
+        input.value = "";
+      }
+    }
+  }
+  
+  function appendMessage(sender, message) {
+    const container = document.getElementById("chatbot-messages");
+    const msg = document.createElement("div");
+    msg.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    container.appendChild(msg);
+    container.scrollTop = container.scrollHeight;
+  }
+  
+  function respondTo(userInput) {
+    let response = chatbotData["default"];
+    for (const key in chatbotData) {
+      if (userInput.includes(key)) {
+        response = chatbotData[key];
+        break;
+      }
+    }
+    setTimeout(() => appendMessage("Bot", response), 600);
+  }
+  </script>
+</body>
+</html>
