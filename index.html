@@ -308,22 +308,14 @@ section{position:relative;min-height:80vh;display:flex;align-items:center;justif
 /* ══════════════════ TIMELINE ══════════════════ */
 .timeline{position:relative;padding-left:2.5rem;margin-top:3rem}
 .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--a),rgba(124,111,255,0))}
-.ti{position:relative;margin-bottom:1.8rem;opacity:0;transform:translateX(-18px);transition:opacity .55s ease, transform .55s ease, border-color .3s, box-shadow .3s;
-    background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.6rem}
+.ti{position:relative;margin-bottom:2.5rem;opacity:0;transform:translateX(-18px);transition:all .55s}
 .ti.on{opacity:1;transform:translateX(0)}
-.ti:hover{border-color:var(--border-b);box-shadow:0 12px 30px rgba(0,220,150,0.07);transform:translateX(3px)}
-.tdot{position:absolute;left:-2.5rem;top:1.6rem;width:11px;height:11px;border-radius:50%;background:var(--a);box-shadow:0 0 10px var(--glow);transform:translateX(-5.5px)}
-.tring{position:absolute;left:-2.5rem;top:1.6rem;width:11px;height:11px;border-radius:50%;border:1.8px solid var(--a);transform:translateX(-5.5px) scale(2);opacity:0;animation:tdotPulse 2.5s ease-out infinite}
+.tdot{position:absolute;left:-2.5rem;top:.3rem;width:13px;height:13px;border-radius:50%;background:var(--a);box-shadow:0 0 14px var(--glow);transform:translateX(-5.5px)}
+.tring{position:absolute;left:-2.5rem;top:.3rem;width:13px;height:13px;border-radius:50%;border:2px solid var(--a);transform:translateX(-5.5px) scale(2);opacity:0;animation:tdotPulse 2.5s ease-out infinite}
 @keyframes tdotPulse{0%{transform:translateX(-5.5px) scale(1);opacity:.7}100%{transform:translateX(-5.5px) scale(2.5);opacity:0}}
-.ti-header{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;flex-wrap:wrap}
-.tm{font-size:.74rem;color:var(--a3);font-weight:700;font-family:monospace;letter-spacing:.08em;text-transform:uppercase}
-.tt{font-size:1.1rem;font-weight:700;color:var(--text)}
-.ts{font-size:.86rem;color:var(--muted);margin-top:.25rem;font-weight:500}
-.ti-desc{margin-top:.7rem;font-size:.83rem;color:var(--muted);line-height:1.6}
-.ti-desc ul{padding-left:1.1rem;margin:0}
-.ti-desc li{margin-bottom:.3rem}
-.ti-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
-.tit{font-size:.65rem;padding:.15rem .5rem;border-radius:100px;background:rgba(0,220,150,0.06);border:1px solid rgba(0,220,150,0.15);color:var(--a);font-weight:600;font-family:monospace}
+.tm{font-size:.74rem;color:var(--a);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.35rem}
+.tt{font-size:1.15rem;font-weight:700;margin-bottom:.25rem}
+.ts{font-size:.88rem;color:var(--muted)}
 
 /* ══════════════════ PROJECTS ══════════════════ */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;margin-top:3rem}
@@ -485,7 +477,7 @@ footer{position:relative;z-index:2;text-align:center;padding:3rem;border-top:1px
       </div>
       <div class="fchip c1"><span style="color:var(--a3)">rank:</span> Global #6</div>
       <div class="fchip" style="bottom:-5%;left:50%;transform:translateX(-50%);animation:fca 8s ease-in-out infinite 1s;"><span style="color:var(--a3)">venture_id:</span> KD_COO_Findr</div>
-      <div class="fchip c3"><span style="color:var(--a3)">role:</span> Founder &amp; CEO</div>
+      <div class="fchip c3"><span style="color:var(--a3)">role:</span> Founder &amp; COO</div>
     </div>
   </div>
 </section>
@@ -633,62 +625,9 @@ footer{position:relative;z-index:2;text-align:center;padding:3rem;border-top:1px
       <h2 class="stitle">Education</h2>
     </div>
     <div class="timeline">
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">B.Tech — Computer Science &amp; Engineering</div>
-          <div class="tm">2021 — PRESENT</div>
-        </div>
-        <div class="ts">SRM Institute of Science and Technology</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Specializing in robotics, systems programming, and artificial intelligence architectures.</li>
-            <li>Active researcher in the Automation Club SRM, leading embedded hardware implementations.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">Robotics</span>
-          <span class="tit">Machine Learning</span>
-          <span class="tit">Computer Vision</span>
-          <span class="tit">Embedded Systems</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">Intermediate (Class XII)</div>
-          <div class="tm">2020 — 2022</div>
-        </div>
-        <div class="ts">Loreto Francs House</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Focused on Physics, Chemistry, and Mathematics (PCM).</li>
-            <li>Led science exhibition project on autonomous traffic signaling.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">PCM</span>
-          <span class="tit">Mathematics</span>
-          <span class="tit">Physics</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">High School (Class X)</div>
-          <div class="tm">2018 — 2020</div>
-        </div>
-        <div class="ts">MRSPS</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Completed standard curriculum with distinction in Science and Mathematics.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">Science</span>
-          <span class="tit">Mathematics</span>
-        </div>
-      </div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2021 — Present</div><div class="tt">B.Tech — Computer Science &amp; Engineering</div><div class="ts">SRM Institute of Science and Technology</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2020 — 2022</div><div class="tt">Intermediate (Class XII)</div><div class="ts">Loreto Francs House</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2018 — 2020</div><div class="tt">High School (Class X)</div><div class="ts">MRSPS</div></div>
     </div>
   </div>
 </section>
@@ -702,103 +641,11 @@ footer{position:relative;z-index:2;text-align:center;padding:3rem;border-top:1px
       <h2 class="stitle">Experience</h2>
     </div>
     <div class="timeline">
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">Founder &amp; CEO</div>
-          <div class="tm">2023 — PRESENT</div>
-        </div>
-        <div class="ts">Kapidhwaj Dynamics Pvt. Ltd. · Deep-Tech Startup</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Leading product design for deep-tech robotic platforms and autonomous hardware solutions.</li>
-            <li>Architected ROS2 integration and custom pathfinding models for autonomous drones and cobots.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">Founder</span>
-          <span class="tit">Robotics</span>
-          <span class="tit">ROS2</span>
-          <span class="tit">System Integration</span>
-          <span class="tit">Firmware</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">Electronics Domain Lead</div>
-          <div class="tm">2022 — PRESENT</div>
-        </div>
-        <div class="ts">Automation Club SRM · Leadership</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Heading hardware design, microcontroller programming, and PCB layout design for student projects.</li>
-            <li>Mentored 30+ students in microcontrollers (STM32, ESP32) and RTOS concepts.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">Leadership</span>
-          <span class="tit">Microcontrollers</span>
-          <span class="tit">PCB Design</span>
-          <span class="tit">RTOS</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">Data Science Intern</div>
-          <div class="tm">2023</div>
-        </div>
-        <div class="ts">Future Intern</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Developed predictive models using Python, scikit-learn, and pandas for real-world datasets.</li>
-            <li>Visualized signal data trends and optimized model training efficiency.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">Python</span>
-          <span class="tit">Data Analysis</span>
-          <span class="tit">Pandas</span>
-          <span class="tit">Predictive Modeling</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">Web Development Intern</div>
-          <div class="tm">2022</div>
-        </div>
-        <div class="ts">MyCaptain</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Built interactive frontend prototypes and resolved API routing bugs.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">HTML/CSS</span>
-          <span class="tit">JavaScript</span>
-          <span class="tit">API Integration</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tdot"></div><div class="tring"></div>
-        <div class="ti-header">
-          <div class="tt">Marketing Intern</div>
-          <div class="tm">2022</div>
-        </div>
-        <div class="ts">MyCaptain</div>
-        <div class="ti-desc">
-          <ul>
-            <li>Analyzed target audiences and designed customer outreach campaigns.</li>
-          </ul>
-        </div>
-        <div class="ti-tags">
-          <span class="tit">Growth</span>
-          <span class="tit">Analytics</span>
-          <span class="tit">Strategy</span>
-        </div>
-      </div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2023 — Present</div><div class="tt">Founder &amp; COO</div><div class="ts">Kapidhwaj Dynamics Pvt. Ltd. · Deep-Tech Startup</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2022 — Present</div><div class="tt">Electronics Domain Lead</div><div class="ts">Automation Club SRM · Leadership</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2023</div><div class="tt">Data Science Intern</div><div class="ts">Future Intern</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2022</div><div class="tt">Web Development Intern</div><div class="ts">MyCaptain</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tring"></div><div class="tm">2022</div><div class="tt">Marketing Intern</div><div class="ts">MyCaptain</div></div>
     </div>
   </div>
 </section>
